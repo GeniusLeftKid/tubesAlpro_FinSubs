@@ -181,7 +181,7 @@ func menuKeuangan(saldo *int) {
 }
 
 func menuSubksripsi(subskripsi *subcription, list *user) {
-	var pilih, pilihSort, pilihTambah int
+	var pilih, pilihSort, pilihTambah, pilihSubs int
 	listSubs(subskripsi)
 
 	for pilih != 3 {
@@ -208,14 +208,30 @@ func menuSubksripsi(subskripsi *subcription, list *user) {
 		if pilih == 1 {
 
 			// Menampilkan daftar sub pribadi user
-			fmt.Println("Daftar subskripsi Anda:")
-			cek := false
-			for i := 0; i < NMAX && list[i].namaAplikasi != ""; i++ {
-				fmt.Printf("%d. %s - Rp%d, tenggat: %s\n", i+1, list[i].namaAplikasi, list[i].harga, list[i].tenggatBayar.Format("02 Jan 2006"))
-				cek = true
-			}
-			if !cek {
-				fmt.Println("Belum ada subskripsi.")
+			for pilihSubs != 2 {
+				fmt.Println("Daftar subskripsi Anda:")
+				cek := false
+				for i := 0; i < NMAX && list[i].namaAplikasi != ""; i++ {
+					fmt.Printf("%d. %s - Rp%d, tenggat: %s\n", i+1, list[i].namaAplikasi, list[i].harga, list[i].tenggatBayar.Format("02 Jan 2006"))
+					cek = true
+				}
+				if !cek {
+					fmt.Println("Belum ada subskripsi.")
+				}
+				fmt.Println("1. Hapus Subskripsi")
+				fmt.Prinltn("2. Kembali")
+				fmt.Scan(&pilihSubs)
+				if pilihSubs == 1 {
+					if !cek {
+						fmt.Println("Tidak ada subskripsi")
+					}
+						//Fungsi menghapus aplikasi dari array user
+
+				} else if pilihSubs == 2 {
+					Println("Kembali ke menu utama...")
+				} else {
+					Println("Pilihan tidak valid")
+				}
 			}
 
 		} else if pilih == 2 {
